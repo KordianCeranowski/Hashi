@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mosty
+namespace Hashi
 {
     class Program
     {

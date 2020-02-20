@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Mosty
+namespace Hashi
 {
     class Node
     {

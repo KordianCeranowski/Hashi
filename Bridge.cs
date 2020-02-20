@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mosty
+namespace Hashi
 {
     class Bridge
     {

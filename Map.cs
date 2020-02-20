@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Mosty
+namespace Hashi
 {
     class Map
     {
@@ -139,14 +139,14 @@ namespace Mosty
         {
             if (this[row, col] == null)
                 return false;
-            return this[row, col].GetType() == typeof(Mosty.Node);
+            return this[row, col].GetType() == typeof(Hashi.Node);
         }
 
         public bool IsBridge(int row, int col)
         {
             if (this[row, col] == null)
                 return false;
-            return this[row, col].GetType() == typeof(Mosty.Bridge);
+            return this[row, col].GetType() == typeof(Hashi.Bridge);
         }
 
     }
