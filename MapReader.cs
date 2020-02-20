@@ -34,7 +34,9 @@ namespace Hashi
                     int value = int.Parse(line[currCol].ToString());
                     if(value > 0)
                     {
-                        map[currRow, currCol] = new Node(value, currRow, currCol);
+                        Node temp = new Node(value, currRow, currCol);
+                        map[currRow, currCol] = temp;
+                        map.nodes.Add(temp);
                     }
                 }
             }

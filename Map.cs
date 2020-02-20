@@ -5,10 +5,11 @@ namespace Hashi
 {
     class Map
     {
-        readonly Dictionary<Tuple<int, int>, object> fields;
+        readonly public Dictionary<Tuple<int, int>, object> fields;
         readonly public int Rows;
         readonly public int Columns;
         readonly List<Bridge> bridges;
+        readonly public List<Node> nodes;
 
         public Map(int rows, int columns)
         {
@@ -16,6 +17,7 @@ namespace Hashi
             Rows = rows;
             Columns = columns;
             bridges = new List<Bridge>();
+            nodes = new List<Node>();
         }
 
         public void BuildBridge(Node nodeOne, Node nodeTwo)
