@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Hashi
+﻿namespace Hashi
 {
     class Bridge
     {
-        Node nodeOne;
-        Node nodeTwo;
-        int usedConnections;
+        public Node nodeOne;
+        public Node nodeTwo;
+        public int usedConnections;
 
         public Bridge(Node nodeOne, Node nodeTwo)
         {
@@ -40,5 +36,9 @@ namespace Hashi
             return usedConnections < 2;
         }
 
+        public override bool Equals(object obj)
+        {
+            return this.nodeOne == ((Bridge)obj).nodeOne && this.nodeTwo == ((Bridge)obj).nodeTwo;
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Hashi
 {
     class Map
     {
-        readonly public Dictionary<Tuple<int, int>, object> fields;
+        readonly Dictionary<Tuple<int, int>, object> fields;
         readonly public int Rows;
         readonly public int Columns;
         readonly List<Bridge> bridges;
@@ -22,6 +22,16 @@ namespace Hashi
 
         public void BuildBridge(Node nodeOne, Node nodeTwo)
         {
+            nodeOne.value--;
+            nodeTwo.value--;
+
+            if (BridgeExists(nodeOne, nodeTwo))
+            {
+                int index = bridges.IndexOf(new Bridge(nodeOne, nodeTwo));
+                bridges[index].usedConnections++;
+                return;  
+            }
+
             int rowDiff = 0;
             int colDiff = 0;
             int multiplyier;
@@ -59,6 +69,13 @@ namespace Hashi
                 rowOne += rowDiff * multiplyier;
                 colOne += colDiff * multiplyier;
             }
+        }
+
+
+
+        private bool BridgeExists(Node nodeOne, Node nodeTwo)
+        {
+            return bridges.Contains(new Bridge(nodeOne, nodeTwo));
         }
 
         public object this[int row, int col]

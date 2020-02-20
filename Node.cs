@@ -9,22 +9,26 @@ namespace Hashi
         public static Map map;
         public int value;
         public int Row, Col;
-        public List<Node> AvaliableNodes;
+        public List<Node> AvailableNodes;
 
-
-        public void TwoConnectionsThreeValue()
+        public void AllConnectionsOccupied(int CountOfNodesNeeded)
         {
-            if (value == 3 && AvaliableNodes.Count == 2)
+            CheckAvailableConnections();
+
+            int valueNeeded = CountOfNodesNeeded * 2 - 1; //3 and 2, 5 and 3, 7 and 4
+
+            if (value == valueNeeded && AvailableNodes.Count == CountOfNodesNeeded)
             {
-                map.BuildBridge(this, AvaliableNodes[0]);
-                map.BuildBridge(this, AvaliableNodes[1]);
-            } 
+                foreach (Node node in AvailableNodes)
+                {
+                    map.BuildBridge(this, node);
+                }
+            }
         }
 
-
-        public void CheckAvaliableConnections()
+        public void CheckAvailableConnections()
         {
-            AvaliableNodes.Clear();
+            AvailableNodes.Clear();
             //   U|
             // L--*--R
             //   D|
@@ -48,7 +52,7 @@ namespace Hashi
 
                 if (map.IsNode(Row, currCol))
                 {
-                    AvaliableNodes.Add((Node)map[Row, currCol]);
+                    AvailableNodes.Add((Node)map[Row, currCol]);
                     break;
                 }
             }
@@ -62,7 +66,7 @@ namespace Hashi
 
                 if (map.IsNode(Row, currCol))
                 {
-                    AvaliableNodes.Add((Node)map[Row, currCol]);
+                    AvailableNodes.Add((Node)map[Row, currCol]);
                     break;
                 }
             }
@@ -76,7 +80,7 @@ namespace Hashi
 
                 if (map.IsNode(currRow, Col))
                 {
-                    AvaliableNodes.Add((Node)map[currRow, Col]);
+                    AvailableNodes.Add((Node)map[currRow, Col]);
                     break;
                 }
             }
@@ -90,12 +94,11 @@ namespace Hashi
 
                 if (map.IsNode(currRow, Col))
                 {
-                    AvaliableNodes.Add((Node)map[currRow, Col]);
+                    AvailableNodes.Add((Node)map[currRow, Col]);
                     break;
                 }
             }
         }
-
 
         private bool FoundObstacle(int row, int col)
         {
@@ -124,7 +127,7 @@ namespace Hashi
             this.value = value;
             this.Row = row;
             this.Col = col;
-            this.AvaliableNodes = new List<Node>();
+            this.AvailableNodes = new List<Node>();
         }
 
         public override string ToString()

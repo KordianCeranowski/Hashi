@@ -12,12 +12,12 @@ namespace Hashi
 
             foreach (var item in map.nodes)
             {
-                ((Node)item).CheckAvaliableConnections();
-                ((Node)item).TwoConnectionsThreeValue();
+                item.AllConnectionsOccupied(2);
             }
 
-            //((Node)map[0, 0]).TwoConnectionsThreeValue();
+            Console.WriteLine(map.ToString());
 
+            map.BuildBridge(((Node)map[0, 0]), ((Node)map[0, 2]));
             Console.WriteLine(map.ToString());
 
             Console.WriteLine();
