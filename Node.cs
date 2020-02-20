@@ -11,8 +11,20 @@ namespace Mosty
         public int Row, Col;
         public List<Node> AvaliableNodes;
 
+
+        public void TwoConnectionsThreeValue()
+        {
+            if (value == 3 && AvaliableNodes.Count == 2)
+            {
+                map.BuildBridge(this, AvaliableNodes[0]);
+                map.BuildBridge(this, AvaliableNodes[1]);
+            } 
+        }
+
+
         public void CheckAvaliableConnections()
         {
+            AvaliableNodes.Clear();
             //   U|
             // L--*--R
             //   D|
